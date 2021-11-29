@@ -3,7 +3,9 @@ package main // 메인임을 알려줌
 import (
 	"fmt" // formatting위한
 
-	"github.com/learngo/something"
+	mydict "github.com/bento1/learngo/dict"
+
+	"github.com/bento1/learngo/something"
 
 	"strings"
 )
@@ -137,5 +139,27 @@ func main() { // 진입정
 	person_ := person{name: "dongun", age: 18, favFood: favFood}
 	fmt.Println(person_)
 	//클래스가없고 생성자가 없어서 직접실행시켜야함
-
+	dictionary := mydict.Dictionary{}
+	dictionary["hello"] = "hello"
+	fmt.Println(dictionary)
+	definition, err := dictionary.Search("hell")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(definition)
+	err2 := dictionary.Add("hello2", "Greeting")
+	if err2 != nil {
+		fmt.Println(err2)
+	}
+	err3 := dictionary.Update("hello2", "bye")
+	if err3 != nil {
+		fmt.Println(err3)
+	}
+	fmt.Println(dictionary["hello2"])
+	err4 := dictionary.Delete("hello2")
+	if err4 != nil {
+		fmt.Println(err4)
+	}
+	definition, err5 := dictionary.Search("hell2")
+	fmt.Println(err5)
 }
